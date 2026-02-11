@@ -31,21 +31,20 @@
 
   /* 실제 위젯 본체 */
   .clock-container {
-    /* 반응형 스케일 (웹/앱/iframe 동일 비율) */
     box-sizing: border-box;
     text-align: center;
-    padding: 2.2vw 3vw;
-    border-radius: 2.5vw;
 
-    backdrop-filter: blur(14px);
-    background: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    /* 배경/그림자 제거 */
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 
 .time {
     font-size: clamp(36px, 8vw, 90px);   /* 기기별 자동 스케일 */
