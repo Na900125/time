@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Apple Style Digital Clock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .clock-container {
+    text-align: center;
+    padding: 32px 48px;
+    border-radius: 28px;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .time {
+    font-size: 112px;  /* 애플 감성 큰 시:분 */
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .date {
+    margin-top: 14px;
+    font-size: 24px;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+  <div class="clock-container">
+    <div class="time" id="time">00:00</div>
+    <div class="date" id="date">0000.00.00 (Mon)</div>
+  </div>
+
+<script>
+function updateClock() {
+  const now = new Date();
+
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const dayName = days[now.getDay()];
+
+  document.getElementById('time').textContent = `${hours}:${minutes}`;
+  document.getElementById('date').textContent = `${year}.${month}.${day} (${dayName})`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+</body>
+</html>
